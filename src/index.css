@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon: #00ff9d;
+  --cyber-teal: #14b89a;
+}
+
+* { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+.dark body { background: #050a0e; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a1628; }
+::-webkit-scrollbar-thumb { background: #14b89a; border-radius: 3px; }
+
+/* Neon glow */
+.neon-glow {
+  text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d, 0 0 40px #00ff9d;
+}
+
+.neon-border {
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.3), inset 0 0 15px rgba(0, 255, 157, 0.05);
+}
+
+/* Grid background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(20,184,154,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,184,154,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Typing cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #00ff9d;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Section fade-in */
+.section-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Noise texture overlay */
+.noise::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #00ff9d, #14b89a, #2dd4b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover glow */
+.card-glow:hover {
+  box-shadow: 0 20px 60px rgba(0, 255, 157, 0.15), 0 0 0 1px rgba(0, 255, 157, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Light mode overrides */
+.light-mode .grid-bg {
+  background-image: 
+    linear-gradient(rgba(20,184,154,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20,184,154,0.08) 1px, transparent 1px);
+}
